@@ -14,6 +14,7 @@ body{
     border-radius: 10%;
     height: 700px;
     width: 600px;
+    background-color: darkgray;
 }
 
 .row{
@@ -22,6 +23,6 @@ body{
     border: 1px solid blue;
 }
 
-.display{
+.display-row{
     flex-grow: 1.5;
 }
