@@ -3,10 +3,6 @@ let latestNum = '';
 let latestOperator = '';
 let display = `${previousNum} ${latestOperator} ${latestNum}`;
 
-let displayDiv = document.querySelector('div');
-
-displayDiv.innerText = display;
-
 const operate = function(a, b, operator){
     switch(operator){
         case '+':
@@ -23,7 +19,7 @@ const operate = function(a, b, operator){
 }
 
 const updateDisplay = function(){
-    display = previousNum+latestOperator+latestNum;
-    displayDiv.innerText = display;
+    /* display = previousNum+latestOperator+latestNum;
+    displayDiv.innerText = display; */
 }
 
