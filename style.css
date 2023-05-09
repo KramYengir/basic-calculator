@@ -64,3 +64,11 @@ body{
     margin: 15px 20px;
     background-color: aquamarine;
 }
+
+.operator{
+    background-color: blueviolet;
+}
+
+.function{
+    background-color: coral;
+}
