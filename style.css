@@ -19,6 +19,7 @@ body{
 
 .row{
     display: flex;
+    justify-content: center;
     flex: 1;
     border: 1px solid blue;
 }
@@ -49,4 +50,17 @@ body{
     display: flex;
     flex: 0.6;
     border: 1px solid rgb(255, 60, 0);
+}
+
+.button-row{
+    display: flex;
+    justify-content: space-around;
+}
+
+.button{
+    flex: 1;
+    border: 1px solid orange;
+    border-radius: 20%;
+    margin: 15px 20px;
+    background-color: aquamarine;
 }
