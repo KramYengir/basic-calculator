@@ -25,4 +25,28 @@ body{
 
 .display-row{
     flex-grow: 1.5;
+    justify-content: center;
+    align-items: center;
+}
+
+.display{
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+    width: 80%;
+    background-color: rgb(210, 214, 214);
+    border: 1px solid rgb(21, 255, 0);
+    border-radius: 2%;
+}
+
+.display-top-line{
+    display: flex;
+    flex: 0.4;
+    border: 1px solid rgb(21, 255, 0);
+}
+
+.display-bottom-line{
+    display: flex;
+    flex: 0.6;
+    border: 1px solid rgb(255, 60, 0);
 }
