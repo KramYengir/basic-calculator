@@ -4,12 +4,11 @@
 let numA = '0';
 let numB = '';
 let latestOperator = '';
-let upperDisplay;
+let upperDisplay = '';
 let mainDisplay = '0';
 
 let isOnSecondNum = false;
-isUpperLineActive = false;
-
+let haveJustOperated = false;
 
 ////////////////////
 //Our DOM Elements//
@@ -43,6 +42,9 @@ buttonsArray.forEach((button) => {
 //////////////////
 const processNumber = function(num){
     console.log('Number Clicked');
+
+    if(haveJustOperated) reset();
+
     if(mainDisplay.length >= 6) return;
     
     if(mainDisplay == '0'){
@@ -59,16 +61,38 @@ const processOperator = function(operator){
     console.log('Operator Clicked');
     
     if(isOnSecondNum){
-        console.log('We will operate');
-    }
-    else if(!isUpperLineActive){
-        latestOperator = operator;
-        numA = mainDisplay;
-        mainDisplay = '0';
-        isUpperLineActive = true;
+        //any operator acts as = at this point
+        if(!haveJustOperated){
+            if(operator == '='){
+                numB = mainDisplay;
+                mainDisplay = operate(Number(numA), Number(numB), latestOperator);
+                upperDisplay = `${numA} ${latestOperator} ${numB} =`;
+            }
+            else{
+                numB = mainDisplay;
+                mainDisplay = operate(Number(numA), Number(numB), operator);
+            }
+            
+            haveJustOperated = true;
+
+        }
+        else if(operator == '=') return;
+        else{
+            haveJustOperated = false;
+            latestOperator = operator;
+            numA = mainDisplay;
+            mainDisplay = '0';
+            isOnSecondNum = true;
+            upperDisplay = `${numA} ${latestOperator} `;
+        }
+        
     }
     else{
         latestOperator = operator;
+        numA = mainDisplay;
+        mainDisplay = '0';
+        isOnSecondNum = true;
+        upperDisplay = `${numA} ${latestOperator} `;
     }
     
     updateDisplay();
@@ -77,15 +101,23 @@ const processOperator = function(operator){
 const processFunction = function(functionType){
     console.log('Function Clicked');
     if(functionType == 'AC'){
-        mainDisplay = '0';
-        numA = '0';
-        numB = '';
-        latestOperator = '';
-
+        reset();
     }
 
 
     updateDisplay();
+}
+
+// Clear everything
+const reset = function(){
+    mainDisplay = '0';
+    numA = '0';
+    numB = '';
+    latestOperator = '';
+    upperDisplay = '';
+    isOnSecondNum = false;
+    haveJustOperated = false;
+    console.log('have resetted')
 }
 
 
@@ -107,7 +139,7 @@ const operate = function(a, b, operator){
 
 //Simple function which refreshes the display
 const updateDisplay = function(){
-    upperDisplay = `${numA} ${latestOperator} ${numB}`;
+    //upperDisplay = `${numA} ${latestOperator} ${numB}`;
     displayTopLine.innerText = upperDisplay;
     displayBottomLine.innerText = mainDisplay;
 }
