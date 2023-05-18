@@ -67,13 +67,16 @@ const processOperator = function(operator){
                 numB = mainDisplay;
                 mainDisplay = operate(Number(numA), Number(numB), latestOperator);
                 upperDisplay = `${numA} ${latestOperator} ${numB} =`;
+                haveJustOperated = true;
             }
             else{
                 numB = mainDisplay;
-                mainDisplay = operate(Number(numA), Number(numB), operator);
+                numA = operate(Number(numA), Number(numB), latestOperator);
+                upperDisplay = `${numA} ${operator} `;
+                mainDisplay = '0';
+                latestOperator =operator;
             }
             
-            haveJustOperated = true;
 
         }
         else if(operator == '=') return;
