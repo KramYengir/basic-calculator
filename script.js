@@ -4,6 +4,7 @@
 let numA = '0';
 let numB = '';
 let latestOperator = '';
+let upperDisplay;
 let mainDisplay = '0';
 
 let isOnSecondNum = false;
@@ -45,11 +46,9 @@ const processNumber = function(num){
     
     if(mainDisplay == '0'){
         mainDisplay = num;
-        numA = num;
     }
     else{
         mainDisplay += num;
-        numA = mainDisplay;
     }
 
     updateDisplay();
@@ -57,7 +56,18 @@ const processNumber = function(num){
 
 const processOperator = function(operator){
     console.log('Operator Clicked');
-    latestOperator = operator;
+    
+    if(isOnSecondNum){
+        console.log('We will operate');
+    }
+    else{
+        latestOperator = operator;
+        numA = mainDisplay;
+        mainDisplay = '0';
+
+        
+    }
+    
     updateDisplay();
 }
 
@@ -85,7 +95,8 @@ const operate = function(a, b, operator){
 
 //Simple function which refreshes the display
 const updateDisplay = function(){
-    /*displayTopLine = `${numA} ${latestOperator} ${numB}`;*/
+    upperDisplay = `${numA} ${latestOperator} ${numB}`;
+    displayTopLine.innerText = upperDisplay;
     displayBottomLine.innerText = mainDisplay;
 }
 
