@@ -103,10 +103,24 @@ const processOperator = function(operator){
 
 const processFunction = function(functionType){
     console.log('Function Clicked');
-    if(functionType == 'AC'){
-        reset();
-    }
 
+    switch(functionType){
+        case 'AC':
+            reset();
+            break;
+        case 'C':
+            cancel();
+            break;
+        case '+/-':
+            switchSign();
+            break;
+        case '.':
+            addDecimal();
+            break;
+        case '%':
+            addPercentage();
+            break;
+    }
 
     updateDisplay();
 }
@@ -121,6 +135,18 @@ const reset = function(){
     isOnSecondNum = false;
     haveJustOperated = false;
     console.log('have resetted')
+    
+}
+
+const cancel = function(){
+    if(mainDisplay == '0') return;
+
+    if(mainDisplay.length == 1){
+        mainDisplay = '0';
+        return;
+    } 
+
+    mainDisplay = mainDisplay.substring(0,mainDisplay.length -1);
 }
 
 
