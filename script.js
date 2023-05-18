@@ -4,9 +4,10 @@
 let numA = '0';
 let numB = '';
 let latestOperator = '';
-let display = `${numA} ${latestOperator} ${numB}`;
+let mainDisplay = '0';
 
-let numberClicked = false;
+let isOnSecondNum = false;
+
 
 ////////////////////
 //Our DOM Elements//
@@ -32,18 +33,25 @@ buttonsArray.forEach((button) => {
         }
     })
 })
+
+
+
 //////////////////
 // Our Functions//
 //////////////////
 const processNumber = function(num){
     console.log('Number Clicked');
-    if(numberClicked){
-        numB = num;
+    if(mainDisplay.length >= 6) return;
+    
+    if(mainDisplay == '0'){
+        mainDisplay = num;
+        numA = num;
     }
     else{
-        numA = num;
-        numberClicked = true;
-    } 
+        mainDisplay += num;
+        numA = mainDisplay;
+    }
+
     updateDisplay();
 }
 
@@ -57,6 +65,7 @@ const processFunction = function(functionType){
     console.log('Function Clicked');
     updateDisplay();
 }
+
 
 // Function to perform the operation
 const operate = function(a, b, operator){
@@ -76,8 +85,8 @@ const operate = function(a, b, operator){
 
 //Simple function which refreshes the display
 const updateDisplay = function(){
-    display = numA+latestOperator+numB;
-    displayTopLine.innerText = display;
+    /*displayTopLine = `${numA} ${latestOperator} ${numB}`;*/
+    displayBottomLine.innerText = mainDisplay;
 }
 
 
