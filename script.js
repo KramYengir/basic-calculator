@@ -8,6 +8,7 @@ let upperDisplay;
 let mainDisplay = '0';
 
 let isOnSecondNum = false;
+isUpperLineActive = false;
 
 
 ////////////////////
@@ -60,12 +61,14 @@ const processOperator = function(operator){
     if(isOnSecondNum){
         console.log('We will operate');
     }
-    else{
+    else if(!isUpperLineActive){
         latestOperator = operator;
         numA = mainDisplay;
         mainDisplay = '0';
-
-        
+        isUpperLineActive = true;
+    }
+    else{
+        latestOperator = operator;
     }
     
     updateDisplay();
@@ -73,6 +76,15 @@ const processOperator = function(operator){
 
 const processFunction = function(functionType){
     console.log('Function Clicked');
+    if(functionType == 'AC'){
+        mainDisplay = '0';
+        numA = '0';
+        numB = '';
+        latestOperator = '';
+
+    }
+
+
     updateDisplay();
 }
 
