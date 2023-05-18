@@ -156,6 +156,17 @@ const addDecimal = function(){
     mainDisplay += '.';
 }
 
+const switchSign = function(){
+    if(mainDisplay == '0') return;
+    if(mainDisplay.includes('-')){
+        mainDisplay = mainDisplay.substring(1);
+        return;
+    }
+    else{
+        mainDisplay = '-'+mainDisplay;
+    }
+}
+
 
 // Function to perform the operation
 const operate = function(a, b, operator){
