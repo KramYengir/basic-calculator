@@ -149,6 +149,12 @@ const cancel = function(){
     mainDisplay = mainDisplay.substring(0,mainDisplay.length -1);
 }
 
+const addDecimal = function(){
+    if(mainDisplay.length >= 6) return;
+
+    mainDisplay += '.';
+}
+
 
 // Function to perform the operation
 const operate = function(a, b, operator){
