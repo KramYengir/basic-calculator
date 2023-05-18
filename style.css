@@ -67,9 +67,9 @@ body{
 }
 
 .operator{
-    background-color: blueviolet;
+    background-color: rgb(110, 105, 114);
 }
 
 .function{
-    background-color: coral;
+    background-color: rgb(145, 129, 58);
 }
