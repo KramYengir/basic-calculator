@@ -1,7 +1,12 @@
-let previousNum = '0';
-let latestNum = '';
+let numA = '0';
+let numB = '';
 let latestOperator = '';
-let display = `${previousNum} ${latestOperator} ${latestNum}`;
+let display = `${numA} ${latestOperator} ${numB}`;
+
+let numberClicked = false;
+
+const displayTopLine = document.querySelector('.display-top-line');
+const displayBottomLine = document.querySelector('.display-bottom-line');
 
 const operate = function(a, b, operator){
     switch(operator){
@@ -19,8 +24,8 @@ const operate = function(a, b, operator){
 }
 
 const updateDisplay = function(){
-    /* display = previousNum+latestOperator+latestNum;
-    displayDiv.innerText = display; */
+    display = numA+latestOperator+numB;
+    displayTopLine.innerText = display;
 }
 
 const buttons = document.querySelectorAll('.button');
@@ -28,20 +33,41 @@ const buttonsArray = Array.from(buttons);
 
 buttonsArray.forEach((button) => {
     button.addEventListener('click', ()=>{
-        processButtonClick(button);
+        if(button.className == 'button operator'){
+            processOperator(button.textContent);
+        }
+        else if(button.className == 'button function'){
+            processFunction(button.textContent);
+        }
+        else{
+            processNumber(button.textContent);            
+        }
     })
 })
 
-const processButtonClick = function(button){
-    if(button.className == 'button operator'){
-        console.log('Operator Clicked');
-    }
-    else if(button.className == 'button function'){
-        console.log('Function Clicked');
+const processNumber = function(num){
+    console.log('Number Clicked');
+    if(numberClicked){
+        numB = num;
     }
     else{
-        console.log('Number Clicked');
-    }
+        numA = num;
+        numberClicked = true;
+    } 
+    updateDisplay();
 }
+
+const processOperator = function(operator){
+    console.log('Operator Clicked');
+    latestOperator = operator;
+    updateDisplay();
+}
+
+const processFunction = function(functionType){
+    console.log('Function Clicked');
+    updateDisplay();
+}
+
+updateDisplay();
 
 
