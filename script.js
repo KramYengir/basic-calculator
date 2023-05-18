@@ -1,3 +1,6 @@
+/////////////////////////
+// Our global variables//
+/////////////////////////
 let numA = '0';
 let numB = '';
 let latestOperator = '';
@@ -5,31 +8,16 @@ let display = `${numA} ${latestOperator} ${numB}`;
 
 let numberClicked = false;
 
+////////////////////
+//Our DOM Elements//
+////////////////////
 const displayTopLine = document.querySelector('.display-top-line');
 const displayBottomLine = document.querySelector('.display-bottom-line');
 
-const operate = function(a, b, operator){
-    switch(operator){
-        case '+':
-            return a+b;
-        case '-':
-            return a-b;
-        case '*':
-            return a*b;
-        case '/':
-            return a/b;
-        default:
-            return 0;
-    }
-}
-
-const updateDisplay = function(){
-    display = numA+latestOperator+numB;
-    displayTopLine.innerText = display;
-}
-
 const buttons = document.querySelectorAll('.button');
 const buttonsArray = Array.from(buttons);
+
+// Add EventListeners to each button
 
 buttonsArray.forEach((button) => {
     button.addEventListener('click', ()=>{
@@ -44,7 +32,9 @@ buttonsArray.forEach((button) => {
         }
     })
 })
-
+//////////////////
+// Our Functions//
+//////////////////
 const processNumber = function(num){
     console.log('Number Clicked');
     if(numberClicked){
@@ -68,6 +58,31 @@ const processFunction = function(functionType){
     updateDisplay();
 }
 
+// Function to perform the operation
+const operate = function(a, b, operator){
+    switch(operator){
+        case '+':
+            return a+b;
+        case '-':
+            return a-b;
+        case '*':
+            return a*b;
+        case '/':
+            return a/b;
+        default:
+            return 0;
+    }
+}
+
+//Simple function which refreshes the display
+const updateDisplay = function(){
+    display = numA+latestOperator+numB;
+    displayTopLine.innerText = display;
+}
+
+
+
+// Refresh the display on page load
 updateDisplay();
 
 
