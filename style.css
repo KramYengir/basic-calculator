@@ -11,7 +11,7 @@ body{
     display: flex;
     flex-direction: column;
     border: 1px solid red;
-    border-radius: 10%;
+    border-radius: 10% 10% 2% 2%;
     height: 700px;
     width: 600px;
     background-color: darkgray;
@@ -25,7 +25,7 @@ body{
 }
 
 .display-row{
-    flex-grow: 1.5;
+    flex-grow: 1.6;
     justify-content: center;
     align-items: center;
 }
@@ -55,13 +55,14 @@ body{
 .button-row{
     display: flex;
     justify-content: space-around;
+    padding: 2px 5px;
 }
 
 .button{
     flex: 1;
     border: 1px solid orange;
-    border-radius: 20%;
-    margin: 15px 20px;
+    border-radius: 10%;
+    margin: 2px 2px;
     background-color: aquamarine;
 }
 
