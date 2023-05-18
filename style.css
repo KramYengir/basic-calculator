@@ -43,12 +43,16 @@ body{
 .display-top-line{
     display: flex;
     flex: 0.4;
+    justify-content: flex-end;
+    align-items: center;
     border: 1px solid rgb(21, 255, 0);
 }
 
 .display-bottom-line{
     display: flex;
     flex: 0.6;
+    justify-content: flex-end;
+    align-items: center;
     border: 1px solid rgb(255, 60, 0);
 }
 
