@@ -23,3 +23,13 @@ const updateDisplay = function(){
     displayDiv.innerText = display; */
 }
 
+const buttons = document.querySelectorAll('.button');
+const buttonsArray = Array.from(buttons);
+
+buttonsArray.forEach((button) => {
+    button.addEventListener('click', ()=>{
+        console.log(button.textContent);
+    })
+})
+
+
