@@ -151,6 +151,7 @@ const cancel = function(){
 
 const addDecimal = function(){
     if(mainDisplay.length >= 6) return;
+    if(mainDisplay.includes('.')) return;
 
     mainDisplay += '.';
 }
@@ -158,23 +159,32 @@ const addDecimal = function(){
 
 // Function to perform the operation
 const operate = function(a, b, operator){
+    let result;
+    
     switch(operator){
         case '+':
-            return a+b;
+            result = a+b;
+            break;
         case '-':
-            return a-b;
+            result =  a-b;
+            break;
         case '*':
-            return a*b;
+            result =  a*b;
+            break;
         case '/':
-            return a/b;
+            result =  a/b;
+            break;
         default:
-            return 0;
+            result =  0;
+            break;
     }
+
+    return Math.round((result + Number.EPSILON) * 100) / 100;
 }
+
 
 //Simple function which refreshes the display
 const updateDisplay = function(){
-    //upperDisplay = `${numA} ${latestOperator} ${numB}`;
     displayTopLine.innerText = upperDisplay;
     displayBottomLine.innerText = mainDisplay;
 }
