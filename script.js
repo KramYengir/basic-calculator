@@ -28,8 +28,20 @@ const buttonsArray = Array.from(buttons);
 
 buttonsArray.forEach((button) => {
     button.addEventListener('click', ()=>{
-        console.log(button.textContent);
+        processButtonClick(button);
     })
 })
+
+const processButtonClick = function(button){
+    if(button.className == 'button operator'){
+        console.log('Operator Clicked');
+    }
+    else if(button.className == 'button function'){
+        console.log('Function Clicked');
+    }
+    else{
+        console.log('Number Clicked');
+    }
+}
 
 
