@@ -90,6 +90,7 @@ const processOperator = function(operator){
         }
         
     }
+    else if(operator == '=') return;
     else{
         latestOperator = operator;
         numA = mainDisplay;
@@ -152,6 +153,10 @@ const cancel = function(){
 const addDecimal = function(){
     if(mainDisplay.length >= 6) return;
     if(mainDisplay.includes('.')) return;
+    if(mainDisplay == '0'){
+        mainDisplay = '0.';
+        return;
+    }
 
     mainDisplay += '.';
 }
@@ -165,6 +170,18 @@ const switchSign = function(){
     else{
         mainDisplay = '-'+mainDisplay;
     }
+}
+
+const addPercentage = function(){
+    if(mainDisplay.length >= 6) return;
+
+    let num = Number(mainDisplay);
+
+    mainDisplay = num * 0.01;
+    mainDisplay = String(mainDisplay);
+    if(mainDisplay.length >= 6){
+        mainDisplay = "ERROR!";
+    } 
 }
 
 
