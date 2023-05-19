@@ -62,10 +62,13 @@ const processNumber = function(num){
     updateDisplay();
 }
 
+
+// Our most complex function (a bit messy for my liking)
+// Determines what to do depending on which operator is pressed
 const processOperator = function(operator){
 
     let isValidOperator = false;
-
+    // Check if operator variable is valid...
     operatorList.forEach( (value)=>{
         if(value == operator){
             isValidOperator = true;
@@ -120,6 +123,7 @@ const processOperator = function(operator){
     updateDisplay();
 }
 
+// Our function to process the special function buttons
 const processFunction = function(functionType){
     console.log('Function Clicked');
 
@@ -146,7 +150,7 @@ const processFunction = function(functionType){
     updateDisplay();
 }
 
-// Clear everything
+// Clear everything, the AC button
 const reset = function(){
     mainDisplay = '0';
     numA = '0';
@@ -160,6 +164,7 @@ const reset = function(){
     
 }
 
+// Our function for the C button
 const cancel = function(){
     if(mainDisplay == '0') return;
 
@@ -171,6 +176,7 @@ const cancel = function(){
     mainDisplay = mainDisplay.substring(0,mainDisplay.length -1);
 }
 
+//Our function for the . button
 const addDecimal = function(){
     if(mainDisplay.length >= 6) return;
     if(mainDisplay.includes('.')) return;
@@ -182,6 +188,7 @@ const addDecimal = function(){
     mainDisplay += '.';
 }
 
+//Our function for the +/- button
 const switchSign = function(){
     if(mainDisplay == '0') return;
     if(mainDisplay.includes('-')){
@@ -193,6 +200,7 @@ const switchSign = function(){
     }
 }
 
+// Our function for the % button
 const addPercentage = function(){
     if(mainDisplay.length >= 6) return;
 
@@ -232,7 +240,7 @@ const operate = function(a, b, operator){
     return Math.round((result + Number.EPSILON) * 100) / 100;
 }
 
-//testing keyboard input
+// Listen for keyboard input
 document.addEventListener('keyup', (e) =>{
     console.log(e.key);
 
