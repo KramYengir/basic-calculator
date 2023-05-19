@@ -9,6 +9,7 @@ let mainDisplay = '0';
 
 let isOnSecondNum = false;
 let haveJustOperated = false;
+let hasErrorDisplayed = false;
 
 ////////////////////
 //Our DOM Elements//
@@ -43,6 +44,8 @@ buttonsArray.forEach((button) => {
 const processNumber = function(num){
     console.log('Number Clicked');
 
+    if(hasErrorDisplayed) reset();
+
     if(haveJustOperated) reset();
 
     if(mainDisplay.length >= 6) return;
@@ -59,6 +62,8 @@ const processNumber = function(num){
 
 const processOperator = function(operator){
     console.log('Operator Clicked');
+
+    if(hasErrorDisplayed) reset();
     
     if(isOnSecondNum){
         //any operator acts as = at this point
@@ -105,6 +110,8 @@ const processOperator = function(operator){
 const processFunction = function(functionType){
     console.log('Function Clicked');
 
+    if(hasErrorDisplayed) reset();
+
     switch(functionType){
         case 'AC':
             reset();
@@ -135,6 +142,7 @@ const reset = function(){
     upperDisplay = '';
     isOnSecondNum = false;
     haveJustOperated = false;
+    hasErrorDisplayed = false;
     console.log('have resetted')
     
 }
@@ -181,6 +189,7 @@ const addPercentage = function(){
     mainDisplay = String(mainDisplay);
     if(mainDisplay.length >= 6){
         mainDisplay = "ERROR!";
+        hasErrorDisplayed = true;
     } 
 }
 
