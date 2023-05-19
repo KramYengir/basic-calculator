@@ -11,6 +11,8 @@ let isOnSecondNum = false;
 let haveJustOperated = false;
 let hasErrorDisplayed = false;
 
+const operatorList = ['/', '*', '-', '+', '='];
+
 ////////////////////
 //Our DOM Elements//
 ////////////////////
@@ -61,6 +63,17 @@ const processNumber = function(num){
 }
 
 const processOperator = function(operator){
+
+    let isValidOperator = false;
+
+    operatorList.forEach( (value)=>{
+        if(value == operator){
+            isValidOperator = true;
+        }
+    })
+
+    if(!isValidOperator) return;
+
     console.log('Operator Clicked');
 
     if(hasErrorDisplayed) reset();
@@ -218,6 +231,21 @@ const operate = function(a, b, operator){
 
     return Math.round((result + Number.EPSILON) * 100) / 100;
 }
+
+//testing keyboard input
+document.addEventListener('keyup', (e) =>{
+    console.log(e.key);
+
+    if(!isNaN(e.key)){
+        processNumber(e.key);
+    }
+    else if(e.key == 'Enter'){
+        processOperator('=');
+    }
+    else(
+        processOperator(e.key)
+    )
+})
 
 
 //Simple function which refreshes the display
